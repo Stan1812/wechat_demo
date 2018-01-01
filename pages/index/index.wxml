@@ -5,9 +5,10 @@
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="slogen">今天的文章已为您准备好</text>
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text bindtap="bindViewTap" class="user-motto">{{motto}}</text>
   </view>
 </view>

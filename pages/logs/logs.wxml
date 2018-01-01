@@ -1,6 +1,18 @@
 <!--logs.wxml-->
-<view class="container log-list">
+<!-- <view class="container log-list">
   <block wx:for="{{logs}}" wx:key="index" wx:for-item="log">
     <text class="log-item">{{index + 1}}. {{log}}</text>
   </block>
+</view> -->
+ <!-- <import src="../wxParse/wxParse.wxml"/> 
+<view class='mainpage'>
+  
+    <text class='content'>{{artContent.data.content}}</text>  
+</view> -->
+
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class="wxParse">
+ <text class='title'>{{artContent.data.title}}</text> 
+   <text class='author'>{{artContent.data.author}}</text> 
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 </view>

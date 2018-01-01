@@ -12,10 +12,17 @@
   border-radius: 50%;
 }
 
-.userinfo-nickname {
+.userinfo-nickname,.slogen {
   color: #aaa;
 }
-
+.slogen{
+  margin-top: 30px;
+}
 .usermotto {
   margin-top: 200px;
+  padding:4px 8px;
+  line-height:30px;
+  color: #ffffff;
+  background-color: #1aad19;
+  border-radius: 4px; 
 }
