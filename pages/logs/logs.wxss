@@ -15,8 +15,9 @@
   padding-bottom: 10rpx;
   color: #666666;
 }
-p{
-  text-indent: 2em;
+.wxParse-p{
+  margin-bottom: 6rpx;
+   text-indent: 2em; 
 }
 /* .log-item {
   margin: 10rpx;

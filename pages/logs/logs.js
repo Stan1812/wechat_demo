@@ -8,20 +8,21 @@ Page({
   },
   onLoad: function () {
     let self = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/today?dev=1',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
-        console.log(res.data.data.content)
+        wx.hideLoading()
         self.setData({
           artContent: res.data,
           article:WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
         })
       }
     })
-
   }
 })
