@@ -8,7 +8,7 @@ Page({
   },
   onLoad: function () {
     let self = this
-    wx.showLoading({
+    wx.showLoading({ 
       title: '加载中',
     })
     wx.request({
