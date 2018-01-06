@@ -3,12 +3,11 @@ const util = require('../../utils/util.js')
 var WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
-    artContent:{},
-    article:"",
-    date:{},
-    loadEnd:false
+    artContent: {},
+    article: "",
+    loadEnd: false
   },
-  requestFail () {
+  requestFail() {
     wx.hideLoading()
     wx.showModal({
       title: '提示',
@@ -20,7 +19,7 @@ Page({
       }
     })
   },
-  getRandom(){
+  getRandom() {
     let self = this
     wx.pageScrollTo({
       scrollTop: 0
@@ -30,7 +29,7 @@ Page({
     })
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/random?dev=1',
-      success:  (res) =>{
+      success: (res) => {
         wx.hideLoading()
         console.log(res.data)
         self.setData({
@@ -40,12 +39,12 @@ Page({
           article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
         })
       },
-      fail:self.requestFail
+      fail: self.requestFail
     })
   },
   onLoad: function () {
     let self = this
-    wx.showLoading({ 
+    wx.showLoading({
       title: '加载中',
     })
     // wx.onCompassChange(function (res) {
@@ -53,17 +52,17 @@ Page({
     // })
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/today?dev=1',
-      success:  (res)=>{
+      success: (res) => {
         wx.hideLoading()
         console.log(res.data)
         self.setData({
           artContent: res.data,
-          date:res.data,
-          loadEnd:true,
-          article:WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
+          date: res.data,
+          loadEnd: true,
+          article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
         })
       },
-      fail:self.requestFail
+      fail: self.requestFail
     })
   },
   onShareAppMessage: function (res) {
@@ -72,10 +71,10 @@ Page({
     })
     return {
       title: '一读',
-      success:  (res) =>{
+      success: (res) => {
         console.log("分享成功")
       },
-      fail: (res)=> {
+      fail: (res) => {
         console.log("分享失败")
       }
     }
