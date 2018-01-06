@@ -23,6 +23,6 @@
   padding:4px 8px;
   line-height:30px;
   color: #ffffff;
-  background-color: #1aad19;
   border-radius: 4px; 
+  background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
 }

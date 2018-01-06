@@ -24,6 +24,7 @@
 .random{
  margin-top: 20rpx;
  width: 90vw;
+ background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
 }
 /* .log-item {
   margin: 10rpx;
