@@ -8,7 +8,19 @@ Page({
     date:{},
     loadEnd:false
   },
-  getRandom:function(){
+  requestFail () {
+    wx.hideLoading()
+    wx.showModal({
+      title: '提示',
+      content: '资源加载失败，将退回首页',
+      success: function (res) {
+        wx.navigateTo({
+          url: '../index/index'
+        })
+      }
+    })
+  },
+  getRandom(){
     let self = this
     wx.pageScrollTo({
       scrollTop: 0
@@ -18,10 +30,7 @@ Page({
     })
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/random?dev=1',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
+      success:  (res) =>{
         wx.hideLoading()
         console.log(res.data)
         self.setData({
@@ -30,7 +39,8 @@ Page({
           loadEnd: true,
           article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
         })
-      }
+      },
+      fail:self.requestFail
     })
   },
   onLoad: function () {
@@ -43,10 +53,7 @@ Page({
     // })
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/today?dev=1',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
+      success:  (res)=>{
         wx.hideLoading()
         console.log(res.data)
         self.setData({
@@ -55,7 +62,22 @@ Page({
           loadEnd:true,
           article:WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
         })
-      }
+      },
+      fail:self.requestFail
     })
+  },
+  onShareAppMessage: function (res) {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+    return {
+      title: '一读',
+      success:  (res) =>{
+        console.log("分享成功")
+      },
+      fail: (res)=> {
+        console.log("分享失败")
+      }
+    }
   }
 })

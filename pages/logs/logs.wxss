@@ -20,6 +20,7 @@
 .wxParse-p{
   margin-bottom: 6rpx;
    text-indent: 2em; 
+     font-size: 16px;
 }
 .random{
  margin-top: 20rpx;
