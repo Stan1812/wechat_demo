@@ -23,6 +23,7 @@
 }
 
 .info{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -34,6 +35,9 @@
   margin-bottom: 10rpx;
 }
 .date{
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
   width: 100%;
   text-align: right;
 }
