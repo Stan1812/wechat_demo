@@ -5,6 +5,7 @@
     <view class='info'>
       <text class='title'>{{item.title}}</text>
     <text class='content'>{{item.content}}</text>
+    <text class='date'>2018.1.10</text>
     </view>
   </view>
 </view>
