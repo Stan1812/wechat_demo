@@ -10,6 +10,7 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
+    app.globalData.fromList = false
     wx.navigateTo({
       url: '../logs/logs'
     })

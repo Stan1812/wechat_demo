@@ -13,7 +13,6 @@
  <text class='title'>{{artContent.data.title}}</text> 
    <text class='author'>{{artContent.data.author}}</text> 
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-
-    <button class='random' wx:if="{{loadEnd}}" type="primary" size="primarySize"
+    <button  class='random' wx:if="{{loadEnd && !showMore}}" type="primary" size="primarySize"
          bindtap="getRandom">再来一篇</button>
 </view>

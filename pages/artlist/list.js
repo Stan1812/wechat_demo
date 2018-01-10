@@ -4,10 +4,11 @@ let app = getApp();
 Page({
 
   data: {
-    artList: [{ title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }]
+    artList: [{ title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }]
   },
   goDetail(event) {
     console.log(event)
+    app.globalData.fromList = true
      app.globalData.date = event.currentTarget.dataset.date
     console.log(app.globalData)
     wx.navigateTo({

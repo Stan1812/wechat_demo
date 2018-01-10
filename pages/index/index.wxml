@@ -11,7 +11,7 @@
   <view class="usermotto">
     <text bindtap="bindViewTap" class="user-motto">{{motto}}</text>
   </view>
-  <view class="listButton">
+  <view   class="listButton">
     <text bindtap="gotoList" class='user-motto'>往期列表</text>
   </view>
 </view>

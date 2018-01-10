@@ -1,11 +1,13 @@
 //logs.js
 const util = require('../../utils/util.js')
+const app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     artContent: {},
     article: "",
-    loadEnd: false
+    loadEnd: false,
+    showMore:true
   },
   requestFail() {
     wx.hideLoading()
@@ -19,7 +21,7 @@ Page({
       }
     })
   },
-  getArt(tarUrl){
+  getArt(tarUrl) {
     let self =this
     wx.request({
       url: tarUrl,
@@ -43,43 +45,23 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    wx.request({
-      url: 'https://interface.meiriyiwen.com/article/random?dev=1',
-      success: (res) => {
-        wx.hideLoading()
-        self.setData({
-          artContent: res.data,
-          date: res.data,
-          loadEnd: true,
-          article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
-        })
-      },
-      fail: self.requestFail
-    })
+    self.getArt('https://interface.meiriyiwen.com/article/random?dev=1')
   },
   onLoad: function () {
     let self = this
     wx.showLoading({
       title: '加载中',
     })
-    // if(today){
-    //   next()
-    // }else(){
-
-    // }
-    wx.request({
-      url: 'https://interface.meiriyiwen.com/article/today?dev=1',
-      success: (res) => {
-        wx.hideLoading()
-        self.setData({
-          artContent: res.data,
-          date: res.data,
-          loadEnd: true,
-          article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
-        })
-      },
-      fail: self.requestFail
+    self.setData({
+      showMore: app.globalData.fromList
     })
+    if (app.globalData.fromList ){
+      console.log('fuck1')
+      self.getArt(`https://interface.meiriyiwen.com/article/day?dev=1&date=${app.globalData.date}`)
+    }else{
+      console.log('fuck2')
+      self.getArt('https://interface.meiriyiwen.com/article/today?dev=1')
+    }
   },
   onShareAppMessage: function (res) {
     wx.showShareMenu({
