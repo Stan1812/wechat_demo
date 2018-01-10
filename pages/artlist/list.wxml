@@ -1,0 +1,10 @@
+<!--pages/artlist/list.wxml-->
+<view class="itemList">
+  <view class='artItem'  wx:for="{{artList}}" wx:key="idx" wx:for-index="idx"  >
+      <!-- <image  class="itemAvatar" src="{{item.avatarUrl}}" background-size="cover"></image> -->
+    <view class='info'>
+      <text class='title'>{{item.title}}</text>
+    <text class='content'>{{item.content}}</text>
+    </view>
+  </view>
+</view>

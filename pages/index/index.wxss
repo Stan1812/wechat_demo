@@ -27,3 +27,11 @@
   border-radius: 4px; 
   background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
 }
+.listButton{
+  margin-top:40rpx; 
+   padding:4px 8px;
+  line-height:30px;
+  color: #ffffff;
+  border-radius: 4px; 
+  background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
+}

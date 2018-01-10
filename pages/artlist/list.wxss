@@ -1,0 +1,34 @@
+/* pages/artlist/list.wxss */
+.itemList{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.artItem{
+  color: #666666;
+  width: 100%;
+  height: 200rpx;
+  background-color:red; 
+  margin-bottom: 20rpx;
+  display: flex;
+  box-sizing: border-box;
+background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);  border-radius:10rpx; 
+}
+/* .itemAvatar{
+  display:block;
+  
+} */
+.info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.title{
+  width:100%;
+  margin-bottom: 10rpx;
+}

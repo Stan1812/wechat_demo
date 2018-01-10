@@ -31,7 +31,6 @@ Page({
       url: 'https://interface.meiriyiwen.com/article/random?dev=1',
       success: (res) => {
         wx.hideLoading()
-        console.log(res.data)
         self.setData({
           artContent: res.data,
           date: res.data,

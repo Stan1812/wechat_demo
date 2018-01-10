@@ -14,6 +14,11 @@ Page({
       url: '../logs/logs'
     })
   },
+  gotoList:()=>{
+    wx.navigateTo({
+      url:'../artlist/list'
+    })
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
