@@ -1,18 +1,21 @@
 // pages/artlist/list.js
+let app = getApp();
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     artList: [{ title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }, { title: "这是什么鬼", content: "就是这个鬼" }, { title: "fuck you", content: "fuck your self" }]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  goDetail(event) {
+    console.log(event)
+     app.globalData.date = event.currentTarget.dataset.date
+    console.log(app.globalData)
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
   onLoad: function (options) {
-  
+    
   },
 
   /**

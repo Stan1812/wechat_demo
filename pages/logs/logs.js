@@ -19,6 +19,22 @@ Page({
       }
     })
   },
+  getArt(tarUrl){
+    let self =this
+    wx.request({
+      url: tarUrl,
+      success: (res) => {
+        wx.hideLoading()
+        self.setData({
+          artContent: res.data,
+          date: res.data,
+          loadEnd: true,
+          article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
+        })
+      },
+      fail: self.requestFail
+    })
+  },
   getRandom() {
     let self = this
     wx.pageScrollTo({
@@ -46,6 +62,11 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    // if(today){
+    //   next()
+    // }else(){
+
+    // }
     wx.request({
       url: 'https://interface.meiriyiwen.com/article/today?dev=1',
       success: (res) => {
