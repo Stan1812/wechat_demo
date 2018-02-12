@@ -1,4 +1,8 @@
 /**index.wxss**/
+.container{
+  height: 100%;
+  overflow: hidden;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -20,17 +24,16 @@
 }
 
 .usermotto {
-  margin-top: 180px;
-  padding:4px 8px;
-  line-height:30px;
-  color: #ffffff;
-  border-radius: 4px; 
-  background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
+  margin-top: 140rpx;
 }
 .listButton{
-  margin-top:40rpx; 
+    margin-top:40rpx; 
+}
+.listButton ,.usermotto{
    padding:4px 8px;
-  line-height:30px;
+  line-height:60rpx;
+  width: 300rpx;
+  text-align: center;
   color: #ffffff;
   border-radius: 4px; 
   background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);

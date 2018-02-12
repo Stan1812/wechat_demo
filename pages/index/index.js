@@ -34,12 +34,14 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        console.log(res.userInfo)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
+           console.log(res.userInfo)
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true

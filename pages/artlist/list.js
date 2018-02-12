@@ -2,9 +2,10 @@
 let app = getApp();
 
 Page({
-
   data: {
-    artList: [{ title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }, { title: "这是什么鬼", content: "就是这个鬼",date:20180110 }, { title: "fuck you", content: "fuck your self",date:20180110 }]
+    artList: [],
+    currentDate:'',
+    pending:false
   },
   goDetail(event) {
     console.log(event)
@@ -15,8 +16,54 @@ Page({
       url: '../logs/logs'
     })
   },
+  getNowFormatDate() {
+  let date = new Date()
+  let month = date.getMonth() + 1
+  let strDate = date.getDate()
+  if (month >= 1 && month <= 9) {
+    month = "0" + month
+  }
+  if (strDate >= 0 && strDate <= 9) {
+    strDate = "0" + strDate
+  }
+  let currentdate = date.getFullYear() + month + strDate
+  return currentdate
+},
+
+getArticles(pra){
+  let self = this
+    wx.request({
+      url: 'http://119.29.235.55:3000/api/articles',
+      method: "POST",
+      data: {
+        date: pra
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data)
+        // self.data.artList.push(...res.data)
+        let data  =  [...self.data.artList,...res.data]
+        self.setData({
+          artList: data,
+          currentDate:res.data[5].data.date.curr,
+          pending :false
+        })
+      }
+    })
+  },
+  onReachBottom: function () {
+    let loadStatus = this.data.pending
+    if(!loadStatus){
+      this.getArticles(this.data.currentDate)
+    }
+  console.log('fuck')
+  },
   onLoad: function (options) {
-    
+    let today = this.getNowFormatDate()
+    console.log(today)
+    this.getArticles(today)
   },
 
   /**
@@ -51,15 +98,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log('cufkj')
+    this.setdata({
+      artList: []
+    })
+    let today = this.getNowFormatDate()
+    console.log(today)
+    this.getArticles(today)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
-  },
+
 
   /**
    * 用户点击右上角分享

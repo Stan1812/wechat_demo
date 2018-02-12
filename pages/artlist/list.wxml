@@ -1,11 +1,18 @@
 <!--pages/artlist/list.wxml-->
 <view class="itemList">
-  <view class='artItem'  wx:for="{{artList}}" data-date='{{item.date}}' wx:key="idx" wx:for-index="idx" bindtap="goDetail" >
+  <view class='artItem'  wx:for="{{artList}}" data-date='{{item.data.date.curr}}' wx:key="idx" wx:for-index="idx" bindtap="goDetail" >
       <!-- <image  class="itemAvatar" src="{{item.avatarUrl}}" background-size="cover"></image> -->
     <view class='info' >
-      <text class='title'>{{item.title}}</text>
-    <text class='content'>{{item.content}}</text>
-    <text class='date'>{{item.date}}</text>
+    <view class='mainInfo'> 
+      <text class='title'>{{item.data.title}}</text>
+    <text class='date'>{{item.data.date.curr}}</text>
+    </view> 
+              <text class='author'>{{item.data.author}}</text>
+    <text class='digest'>{{item.data.digest}}</text>
     </view>
+  </view>
+  <view class="spinner">
+    <view class="double-bounce1"></view>
+    <view class="double-bounce2"></view>
   </view>
 </view>

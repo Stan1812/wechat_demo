@@ -1,17 +1,17 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击获取头像 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="slogen">今天的文章已为您备好</text>
     </block>
+    <text class="slogen">今天的文章已为您备好</text>
   </view>
-  <view class="usermotto">
-    <text bindtap="bindViewTap" class="user-motto">{{motto}}</text>
+  <view bindtap="bindViewTap" class="usermotto">
+    <text  class="user-motto">{{motto}}</text>
   </view>
-  <view   class="listButton">
-    <text bindtap="gotoList" class='user-motto'>往期列表</text>
+   <view   bindtap="gotoList" class="listButton">
+    <text class='user-motto'>往期列表</text>
   </view>
 </view>
