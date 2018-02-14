@@ -27,11 +27,12 @@ Page({
       url: tarUrl,
       success: (res) => {
         wx.hideLoading()
+        console.log(res)
         self.setData({
-          artContent: res.data,
-          date: res.data,
+          artContent: res.data[0],
+          date: res.data[0].data.date.curr,
           loadEnd: true,
-          article: WxParse.wxParse('article', 'html', res.data.data.content, self, 5)
+          article: WxParse.wxParse('article', 'html', res.data[0].data.content, self, 5)
         })
       },
       fail: self.requestFail
@@ -45,7 +46,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    self.getArt('https://interface.meiriyiwen.com/article/random?dev=1')
+    self.getArt('http://119.29.235.55:3000/api/random')
   },
   onLoad: function () {
     let self = this
@@ -57,10 +58,10 @@ Page({
     })
     if (app.globalData.fromList ){
       console.log('fuck1')
-      self.getArt(`https://interface.meiriyiwen.com/article/day?dev=1&date=${app.globalData.date}`)
+      self.getArt(`http://119.29.235.55:3000/api/oneart?date=${app.globalData.date}`)
     }else{
       console.log('fuck2')
-      self.getArt('https://interface.meiriyiwen.com/article/today?dev=1')
+      self.getArt('http://119.29.235.55:3000/api/today')
     }
   },
   onShareAppMessage: function (res) {
@@ -71,6 +72,7 @@ Page({
       title: '一读',
       success: (res) => {
         console.log("分享成功")
+        
       },
       fail: (res) => {
         console.log("分享失败")
